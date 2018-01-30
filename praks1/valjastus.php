@@ -10,4 +10,5 @@
  * KOMMIE
  * TEINE KOMMI
  */
-echo "Hello World!";
+echo "Hello World!"; // echo demonstratsioon
+print ("Hello Worley!"); // print demonstratsioon
