@@ -31,3 +31,6 @@ if ($ilmValjas == "sajab lund") {
 }   else {
     echo "Pole mõtet sauna minna!<br />";
 }
+// ? operator . ternary operator
+$ilmValjas = "sajab lund";
+echo ($ilmValjas == "sajab lund") ? "Tuleb minna sauna!<br />" : "Pole mõtet sauna minna<br />";
