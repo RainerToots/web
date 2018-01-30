@@ -10,3 +10,4 @@
  * KOMMIE
  * TEINE KOMMI
  */
+echo "GET CUCKT BOI!";
