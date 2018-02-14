@@ -15,8 +15,9 @@ if ($soogihind > 0 and $soodusprotsent > 0 and $toetus > 0); {
     $hindop = $soodushind - $toetus;
     echo "Teie söögihinnaks oleks " .$hindop."<br />";
 }
- *Eelmise tunni töö
+ *
  */
+// Eelmise tunni tööd
 require_once 'funktsioonid.php'; // ligipääs funktsioonid.php failile
 
 // väljastame html-i vorm
@@ -70,8 +71,15 @@ foreach ($praed as $praad){
     echo '<code>'.$praad['kirjeldus'].'</code><br />';
     echo '<ul>';
     foreach ($kasutajad as $kasutaja){
-        $soogiHind = soogiHind($praad['hind'], $kasutaja['soodus'], $kasutaja['opilaskaart']);
-        echo '<dd>Prae hind '.$kasutaja['roll'].' = '.round($soogiHind, 2).' €</dd><br />';
+        if(empty($_POST)) {
+            $_POST['roll'] = 'kulaline';
+        }
+        if($_POST['roll'] == $kasutaja['roll']) { // Hind ainult, mis valid
+            $soogiHind = soogiHind($praad['hind'],
+                $kasutaja['soodus'],
+                $kasutaja['opilaskaart']);
+            echo '<dd>Prae hind ' . $kasutaja['roll'] . ' = ' . round($soogiHind, 2) . ' €</dd><br />';
+        }
     }
     echo '</ul>';
 }
