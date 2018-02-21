@@ -50,7 +50,7 @@ if(isset($_GET['reset'])) {
     Sisesta number 1-50:<br>
     <input type="hidden"    name="counter"  value="<?php echo $_SESSION['counter']; ?>" />
     <input type="number"    name="number"   min="1" max="50">
-    <input type="submit"    name="button"   value="Vali!" />
+    <input type="submit"    name="button"   value="Otsi" />
 </form>
 <?php
 $number = 10;
