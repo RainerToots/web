@@ -32,46 +32,56 @@ if(!empty($_POST['num_sis'])){
     }
 }
 echo "$numberarv"; */ // Proovime teist lahendust
+?>
+<?php
 session_start();
 
-if(!isset($_SESSION['counter'])) {
-    $_SESSION['counter'] = 0;
+if(!isset($_SESSION['serveriArv']) and !isset($_SESSION['katseteArv'])){
+    $_SESSION['serveriArv'] = mt_rand(1,50);
+    $_SESSION['katseteArv'] = 0;
+} else {
+    $serveriArv = $_SESSION['serveriArv'];
+    $katseteArv = ++$_SESSION['katseteArv'];
 }
 
-if(isset($_GET['button'])) {
-    ++$_SESSION['counter'];
+if(isset($_POST['reset'])) {
+    $_SESSION['katseteArv'] = 0;
+    $_SESSION['serveriArv'] = mt_rand(1, 50);
 }
-if(isset($_GET['reset'])) {
-    $_SESSION['counter'] = 0;
+
+echo '
+    <form method="post" action="'.$_SERVER['PHP_SELF'].'">
+        Arva number 1-50:<br>
+        <input type="number"    name="kasutajaArv"  min="1" max="50"><br />
+        <input type="submit"    value="Otsi" />
+    </form>
+';
+
+if(!empty($_POST['kasutajaArv'])) {
+    $kasutajaArv = $_POST['kasutajaArv'];
+        if($kasutajaArv > $serveriArv) {
+            echo "Teie arvatud arv on suurem kui vastus.<br />";
+        }
+        if($kasutajaArv < $serveriArv) {
+            echo "Teie arvatud arv on väiksem kui vastus.<br />";
+        }
+        if (abs($kasutajaArv-$serveriArv)<=5){
+            if($kasutajaArv == $serveriArv){
+                echo 'Arvasid ära!<br />';
+                echo 'Arv oli '.$serveriArv.'<br />';
+            }
+            echo 'Oled juba lähedal!<br />';
+        }
+        echo 'Olete arvanud '.$katseteArv.' korda!<br />';
+} else {
+    echo 'Arv peab olema sisestatud';
 }
+
+echo '
+    <form method="post">
+        <br>
+        <input type="submit" name="reset" value="Restart">
+    </form>
+';
+
 ?>
-
-<form method="GET">
-    Sisesta number 1-50:<br>
-    <input type="hidden"    name="counter"  value="<?php echo $_SESSION['counter']; ?>" />
-    <input type="number"    name="number"   min="1" max="50">
-    <input type="submit"    name="button"   value="Otsi" />
-</form>
-<?php
-$number = rand(1,50);
-$pakutudnumber = $_GET["number"];
-if  (empty($pakutudnumber)) {
-    echo "";
-}   elseif ($pakutudnumber >= $number - 5 and $pakutudnumber < $number) {
-    echo "Sinu arvatud arv on natukene väiksem";
-}   elseif ($pakutudnumber <= $number + 5 and $pakutudnumber > $number) {
-    echo "Sinu arvatud arv on natukene Suurem";
-}   elseif ($pakutudnumber< "$number") {
-    echo "Sinu arvatud arv on liiga väike";
-}   elseif ($pakutudnumber> "$number") {
-    echo "Sinu arvatud arv on liiga suur";
-}   elseif ($pakutudnumber = $number) {
-    echo "Te arvasite õigesti!";
-}
-
-echo "<br>Proov:" .$_SESSION['counter'];
-?>
-<form mehot="GET">
-    <br>
-    <input type="submit" name="reset" Value="Proovi uut arvu?">
-</form>
