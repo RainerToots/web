@@ -53,7 +53,7 @@ if(isset($_GET['reset'])) {
     <input type="submit"    name="button"   value="Otsi" />
 </form>
 <?php
-$number = 10;
+$number = rand(1,50);
 $pakutudnumber = $_GET["number"];
 if  (empty($pakutudnumber)) {
     echo "";
