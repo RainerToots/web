@@ -6,6 +6,8 @@
  * Time: 9:54
  */
 
+
+
     if (!checkdate($month, $day, $year)) {
         $nowArray = getDate();
         $month = $nowArray[mon];
@@ -22,6 +24,13 @@
 </head>
 <body>
 <form method="post">
+        Eesnimi
+        <input type="text" name="eesnimi">
+        <br/><br/>Perenimi
+        <input type="text" name="perenimi">
+        <br/>
+    <br/>
+    Päev:
     <select name="day">
         <?php
         for ( $x=1; $x<=31; $x++)
@@ -32,6 +41,7 @@
         }
         ?>
     </select>
+    Kuu:
 <select name="month">
     <?php
     $months = Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
@@ -43,6 +53,7 @@
     }
     ?>
 </select>
+    Aasta:
     <select name="year">
         <?php
         for ( $x=1980; $x<=2018; $x++)
@@ -53,7 +64,21 @@
         }
         ?>
     </select>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" name="submit">
+    <?php
+    $eesnimi = $_POST["eesnimi"];
+    $perenimi = $_POST["perenimi"];
+    $day = $_POST["day"];
+    $month = $_POST["month"];
+    $year = $_POST["year"];
+    if (isset($_POST["submit"]))
+    {
+        echo '<br/><br/>';
+        echo 'Sinu nimi on'.$eesnimi.' '.$perenimi.'<br/>';
+        echo 'Kuupäev on '.$day.'/'.$month.'/'.$year;
+    }
+    ?>
+    </table>
 </form>
 </body>
 </html>
