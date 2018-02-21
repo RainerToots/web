@@ -7,7 +7,7 @@
  */
 
 // Numberi genereerimine
-require_once ("funktsioonid.php");
+/* require_once ("funktsioonid.php");
 loeVormFailist("manguvorm.html");
 $number=$_POST['num_sis']; // kasutaja sisestab
 $lahedal = 5; // lähedal arvule variable
@@ -31,4 +31,47 @@ if(!empty($_POST['num_sis'])){
         echo "Oled juba lähedal! ";
     }
 }
-echo "$numberarv";
+echo "$numberarv"; */ // Proovime teist lahendust
+session_start();
+
+if(!isset($_SESSION['counter'])) {
+    $_SESSION['counter'] = 0;
+}
+
+if(isset($_GET['button'])) {
+    ++$_SESSION['counter'];
+}
+if(isset($_GET['reset'])) {
+    $_SESSION['counter'] = 0;
+}
+?>
+
+<form method="GET">
+    Sisesta number 1-50:<br>
+    <input type="hidden"    name="counter"  value="<?php echo $_SESSION['counter']; ?>" />
+    <input type="number"    name="number"   min="1" max="50">
+    <input type="submit"    name="button"   value="Vali!" />
+</form>
+<?php
+$number = 10;
+$pakutudnumber = $_GET["number"];
+if  (empty($pakutudnumber)) {
+    echo "";
+}   elseif ($pakutudnumber >= $number - 5 and $pakutudnumber < $number) {
+    echo "Sinu arvatud arv on natukene väiksem";
+}   elseif ($pakutudnumber <= $number + 5 and $pakutudnumber > $number) {
+    echo "Sinu arvatud arv on natukene Suurem";
+}   elseif ($pakutudnumber< "$number") {
+    echo "Sinu arvatud arv on liiga väike";
+}   elseif ($pakutudnumber> "$number") {
+    echo "Sinu arvatud arv on liiga suur";
+}   elseif ($pakutudnumber = $number) {
+    echo "Te arvasite õigesti!";
+}
+
+echo "<br>Proov:" .$_SESSION['counter'];
+?>
+<form mehot="GET">
+    <br>
+    <input type="submit" name="reset" Value="Proovi uut arvu?">
+</form>

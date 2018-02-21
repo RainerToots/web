@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <form action="mang.php" method="post">
+    <body>
+    </body>
+    <form action="mang.php" method="get">
     <meta charset="UTF-8">
     <h2>Arva number 1 - 50</h2>
     <input type="number" name="num_sis">
+        <input type="number"    name="number"   min="1" max="50">
         <input type="submit" name="sisesta" value="Otsi" />
+        <input type="hidden" name="counter" value="<?php echo $_SESSION['counter']; ?>" />
     </form>
-
 </head>
-<body>
-
-</body>
-</html>
