@@ -74,7 +74,7 @@
     if (isset($_POST["submit"]))
     {
         echo '<br/><br/>';
-        echo 'Sinu nimi on'.$eesnimi.' '.$perenimi.'<br/>';
+        echo 'Sinu nimi on '.$eesnimi.' '.$perenimi.'<br/>';
         echo 'Kuupäev on '.$day.'/'.$month.'/'.$year;
     }
     ?>
