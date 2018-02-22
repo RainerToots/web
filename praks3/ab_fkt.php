@@ -19,3 +19,15 @@ function uhendus(){
     }
     return $uhend;
 }
+
+function saadaAndmed($uhend, $sql){
+    $tulemus = mysqli_query($uhend, $sql);
+    if($tulemus == false){
+        echo 'Probleem päringuga<br/>';
+        echo mysqli_error($uhend);
+        echo mysqli_errno($uhend);
+        return false;
+    } else {
+        return $tulemus;
+    }
+}

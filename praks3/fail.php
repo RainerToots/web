@@ -6,6 +6,8 @@
  * Time: 13:07
  */
 
+require_once 'ab_fkt.php';
+
 echo '<pre>';
 print_r($_POST);
 echo '</pre>';
@@ -19,3 +21,5 @@ echo $paev.'<br/>';
 
 $aeg = $aasta.'-'.$kuu.'-'.$paev;
 echo $aeg.'<br />';
+
+$uhendus = uhendus();
