@@ -7,15 +7,15 @@
  */
 
 echo '<pre>';
-priunt_r($_POST);
+print_r($_POST);
 echo '</pre>';
 extract($_POST);
 
-echo $eesnimi'<br/>';
-echo $perenimi'<br/>';
-echo $aasta'<br/>';
-echo $kuu'<br/>';
-echo $paev'<br/>';
+echo $eesnimi.'<br/>';
+echo $perenimi.'<br/>';
+echo $aasta.'<br/>';
+echo $kuu.'<br/>';
+echo $paev.'<br/>';
 
 $aeg = $aasta.'-'.$kuu.'-'.$paev;
 echo $aeg.'<br />';

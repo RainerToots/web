@@ -51,7 +51,7 @@ function aasta(){
 }
 function registreerimisVorm(){
     echo '
-    <form action="" method="post">
+    <form action="fail.php" method="post">
         <table>
             <tr>
                 <td>Eesnimi</td>
