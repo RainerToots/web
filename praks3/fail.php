@@ -23,3 +23,10 @@ $aeg = $aasta.'-'.$kuu.'-'.$paev;
 echo $aeg.'<br />';
 
 $uhendus = uhendus();
+
+$sql = 'INSERT INTO andmed SET '.
+    'eesnimi="'.$eesnimi.'", '.
+    'perenimi="'.$perenimi.'", '.
+    'aeg="'.$aeg.'"';
+
+$tulemus = saadaAndmed($uhendus, $sql);
